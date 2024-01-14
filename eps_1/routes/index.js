@@ -64,9 +64,11 @@ router.get('/factor_star', function (request, response) {
 });
 
 // 词云
-router.get('/word_cloud_get', function(request, response) {
+router.get('/get_star', function(request, response) {
   // sql字符串和参数
-  var fetchSql = "select keywords from fetches";
+  var fetchSql = "select Title, UserRating, Genre, Year, Stars from animation " +
+                  "where Year >= " + request.query.start + ' and Year <= ' + request.query.end +
+                  " and Stars like '%" + request.query.name + "%'";
   mysql.query(fetchSql, function(err, result, fields) {
     response.writeHead(200, {
       "Content-Type": "application/json"

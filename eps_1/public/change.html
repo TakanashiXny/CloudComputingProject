@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>词云图</title>
+    <title>动漫数据随时间变化</title>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
     <script src="./javascripts/echarts-wordcloud.js"></script>
@@ -15,16 +15,40 @@
         <li><a href="index.html">主页</a></li>
         <li><a href="search.html">搜索动漫</a></li>
         <li><a href="time_series.html">动漫热度</a> </li>
-        <li><a href="change.html">热度变化</a></li>
+        <li><a href="change.html">声优热度分析</a></li>
     </ul>
 </div>
 
 <div id="head_title">
-    来看一看这几天发生了什么吧
+    声优在这几年有哪些改变
 </div>
 
+<div id="setting" style="text-align: center; margin-top: 10px">
+    从
+    <input type="text" name="year1" id="year1" style="width: 50px"> 年
+    到
+    <input type="text" name="year2" id="year2" style="width: 50px"> 年   声优姓名
+    <input type="text" name="name" id="name" style="width: 50px">
 
+    <br>
 
+    <input class="form-submit1" type="button" value="查询" id="search_star">
+</div>
 
+<div class="container" style="display: flex; justify-content: space-between; align-items: center">
+    <div class="picture" id="rate" style="width: 33%; margin-left: 10px">
+<!--        <div style="align-items: center">声优的作品热度变化</div>-->
+    </div>
+
+    <div class="picture" id="genre" style="width: 33%; margin-left: 40px">
+        <div style="align-items: center">声优的作品题材分布</div>
+    </div>
+
+    <div id="cooperator">
+        <div style="align-items: center">声优的作品题材分布</div>
+    </div>
+</div>
+
+<script src="javascripts/change.js"></script>
 </body>
 </html>
