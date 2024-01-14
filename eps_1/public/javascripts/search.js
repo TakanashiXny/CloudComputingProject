@@ -13,12 +13,11 @@ $(document).ready(function() {
         $("#next").show();
         // 提取参数：搜索条件1，搜索条件2，顺序，排序指标
         var condition1 = $("#search1").val();
-        var condition2 = $("#search2").val();
-        var order = $("#order").val();
-        var index = $("#order_index").val();
-        var option = $("#option").val();
-        $.get('/process_get?title1=' + $("#text1").val() + '&way1=' + condition1 + '&title2=' + $("#text2").val() +
-            '&way2=' + condition2 + '&order=' + order + '&index=' + index + '&option=' + option, function(data) {
+        // var condition2 = $("#search2").val();
+        // var order = $("#order").val();
+        // var index = $("#order_index").val();
+        // var option = $("#option").val();
+        $.get('/process_get?title1=' + $("#text1").val() + '&way1=' + condition1, function(data) {
             if (data[0] === null || data[0] === undefined) {
                 // 检查数据是否存在
                 alert("不存在您搜索的新闻哦");
@@ -96,8 +95,8 @@ $(document).ready(function() {
      */
     function pagination() {
         $("#news").empty();
-        $("#news").append('<tr><th>标题</th><th>来源</th>' +
-            '<th>URL</th><th>发布日期</th><th>关键词</th></tr>');
+        $("#news").append('<tr><th>标题</th><th>用户评分</th>' +
+            '<th>题材</th><th>年份</th><th>明星</th></tr>');
 
         for (let list of all_data.slice((current_page - 1) * PERPAGE, current_page * PERPAGE)) {
             let table;
@@ -111,11 +110,12 @@ $(document).ready(function() {
 
             Object.values(list).forEach(element => {
                 // 第二个位置是url的位置，将其转变为跳转按钮
-                if (num !== 2) {
-                    table += ('<td>' + element + '</td>');
-                } else {
-                    table += ('<td style="width: 80px">' + '<a href=\"' + element + '\">点击跳转</a>' + '</td>');
-                }
+                // if (num !== 2) {
+                //
+                // } else {
+                //     table += ('<td style="width: 80px">' + '<a href=\"' + element + '\">点击跳转</a>' + '</td>');
+                // }
+                table += ('<td>' + element + '</td>');
                 num++;
             });
             $("#news").append(table + "</tr>");

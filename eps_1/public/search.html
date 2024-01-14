@@ -5,6 +5,7 @@
     <title>新闻查询网页</title>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.js"></script> <!--echart-->
+
     <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
 </header>
 <body>
@@ -30,7 +31,7 @@
     <!--第一个条件-->
     <br> 搜索条件1：
     <select name="搜索条件1" id="search1" class="select">
-        <option value="title" selected>标题</option>
+        <option value="Title" selected>标题</option>
         <option value="source_name">来源</option>
         <option value="keywords">关键词</option>
     </select>
@@ -38,44 +39,6 @@
     <input type="text" name="title_text1" id="text1">
 
     <br>
-
-    <!--关键词之间的关系-->
-    <label>
-        <select name="搜索条件2" id="option" class="select">
-            <option value="and" selected>AND</option>
-            <option value="or">OR</option>
-        </select>
-    </label>
-
-    <br>
-
-    <!--第二个条件-->
-    <br> 搜索条件2：
-    <label>
-        <select name="搜索条件2" id="search2" class="select">
-            <option value="title" selected>标题</option>
-            <option value="source_name">来源</option>
-            <option value="keywords">关键词</option>
-        </select>
-        <input type="text" name="title_text2" id="text2">
-    </label>
-    <br>
-
-    <!--排序方式-->
-    <label>
-        按
-        <select name="order_index" id="order_index" class="select">
-            <option value="publish_date" selected>发布日期</option>
-            <option value="source_name">来源</option>
-            <option value="title">标题</option>
-            <option value="keywords">关键词</option>
-        </select>
-        排序：
-        <select name="排序顺序" id="order" class="select">
-            <option value="ascend" selected>从前到后</option>
-            <option value="descend" >从后到前</option>
-        </select>
-    </label>
 
     <br>
 

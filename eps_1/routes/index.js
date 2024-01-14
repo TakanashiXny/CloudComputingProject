@@ -9,21 +9,13 @@ router.get('/', function(req, res, next) {
 
 router.get('/process_get', function(request, response) {
   // sql字符串和参数
-  var fetchSql = "select title, source_name, url, publish_date, keywords " +
-      "from fetches where " + request.query.way1 + " like '%" + request.query.title1 + "%' " +
-      request.query.option + " " + request.query.way2 + " like '%" + request.query.title2 + "%' order by " + request.query.index;
+  var fetchSql = "select Title, UserRating, Genre, Year, Stars " +
+      "from animation where " + request.query.way1 + " like '%" + request.query.title1 + "%'";
 
-  if (request.query.order === "descend") {
-    fetchSql += " desc";
-  }
-      // "select url, source_name, title, author, publish_date " +
-      // "from fetches where title like '%" + request.query.title + "%'";
   mysql.query(fetchSql, function(err, result, fields) {
+    console.log(result)
     response.writeHead(200, {
       "Content-Type": "application/json"
-    });
-    result.forEach(eachNews => {
-      eachNews.publish_date = eachNews.publish_date.toFormat("YYYY-MM-DD");
     });
     response.write(JSON.stringify(result));
     response.end();

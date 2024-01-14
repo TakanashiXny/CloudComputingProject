@@ -3,7 +3,7 @@ var pool = mysql.createPool({
     host: '127.0.0.1',
     user: 'root',
     password: 'root',
-    database: 'crawl',
+    database: 'animation',
     connecTimeout:500,    //超时
     connectionLimit:100   //最大连接数
 });
