@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "date-utils": "^1.2.21",
+    "echarts": "^5.4.2",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "mysql": "^2.18.1",
+    "request": "^2.88.2",
+    "require": "^2.4.20"
+  }
+}

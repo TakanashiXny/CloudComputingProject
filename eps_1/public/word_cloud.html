@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>词云图</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+    <script src="./javascripts/echarts-wordcloud.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+</head>
+<body>
+
+<div id="navigation" style="list-style: none">
+    <ul style="list-style: none">
+        <li><a href="index.html">主页</a></li>
+        <li><a href="search.html">搜索新闻</a></li>
+        <li><a href="time_series.html">时间热度</a> </li>
+        <li><a href="word_cloud.html">词云</a></li>
+    </ul>
+</div>
+
+<div id="head_title">
+    来看一看这几天发生了什么吧
+</div>
+
+
+
+<div class="button_container" id="button_container" style="text-align: center">
+    <button type="button" name="cloud" value="cloud" id="cloud_pc">词云图</button>
+    <button type="button" name="bar" value="bar" id="bar_pc">柱状图</button>
+</div>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 1000px;height:600px;margin: auto"></div>
+
+<div class="picture" id="bar">
+    <!--用于存储时间序列图-->
+</div>
+
+<script src="javascripts/word_cloud.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<header>
+    <title>新闻查询网页</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.js"></script> <!--echart-->
+    <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+</header>
+<body>
+
+<!--导航栏-->
+<div id="navigation">
+    <ul style="list-style: none">
+        <li><a href="index.html">主页</a></li>
+        <li><a href="search.html">搜索新闻</a></li>
+        <li><a href="time_series.html">时间热度</a> </li>
+        <li><a href="word_cloud.html">词云</a></li>
+    </ul>
+</div>
+
+<div id="head_title">
+    今天想了解什么方面的新闻呢？
+</div>
+
+
+
+<!--搜索栏-->
+<form style="text-align: center">
+    <!--第一个条件-->
+    <br> 搜索条件1：
+    <select name="搜索条件1" id="search1" class="select">
+        <option value="title" selected>标题</option>
+        <option value="source_name">来源</option>
+        <option value="keywords">关键词</option>
+    </select>
+    <!--输入具体内容-->
+    <input type="text" name="title_text1" id="text1">
+
+    <br>
+
+    <!--关键词之间的关系-->
+    <label>
+        <select name="搜索条件2" id="option" class="select">
+            <option value="and" selected>AND</option>
+            <option value="or">OR</option>
+        </select>
+    </label>
+
+    <br>
+
+    <!--第二个条件-->
+    <br> 搜索条件2：
+    <label>
+        <select name="搜索条件2" id="search2" class="select">
+            <option value="title" selected>标题</option>
+            <option value="source_name">来源</option>
+            <option value="keywords">关键词</option>
+        </select>
+        <input type="text" name="title_text2" id="text2">
+    </label>
+    <br>
+
+    <!--排序方式-->
+    <label>
+        按
+        <select name="order_index" id="order_index" class="select">
+            <option value="publish_date" selected>发布日期</option>
+            <option value="source_name">来源</option>
+            <option value="title">标题</option>
+            <option value="keywords">关键词</option>
+        </select>
+        排序：
+        <select name="排序顺序" id="order" class="select">
+            <option value="ascend" selected>从前到后</option>
+            <option value="descend" >从后到前</option>
+        </select>
+    </label>
+
+    <br>
+
+    <input class="form-submit1" type="button" value="查询">
+
+</form>
+
+<br>
+
+<!--表格放的位置-->
+<div class="cardLayout" style="margin: 10px 0">
+    <table id="news" style="text-align: center"></table>
+</div>
+
+<!--翻页按钮-->
+<div class="button_container" id="button_container" style="text-align: center">
+    <button type="button" name="prev" value="prev" id="prev">上一页</button>
+    <button type="button" name="next" value="next" id="next">下一页</button>
+    <form style="text-align: center">
+        <input type="text" class="skip" id="skip_page" style="width: 50px; margin-top: 30px">
+        <button type="button" class="skip" id="skip" value="skip_page" style="background-color: #98bf21">跳转</button>
+    </form>
+
+</div>
+<br>
+
+<div id="page" style="text-align: center; font-size: larger">
+<!--显示当前页数和总页数-->
+</div>
+
+<script src="javascripts/search.js"></script>
+</body>
+</html>
