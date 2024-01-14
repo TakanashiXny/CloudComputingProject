@@ -22,19 +22,41 @@ router.get('/process_get', function(request, response) {
   });
 });
 
+// 年份
+router.get('/factor_year', function (request, response) {
+  var fetchSql = "select UserRating, Year from animation";
 
-router.get('/time_series_get', function(request, response) {
-  // sql字符串和参数
-  var fetchSql = "select * " +
-      "from fetches where keywords like '%" + request.query.keywords + "%' or " +
-      "content like '%" + request.query.keywords + "%' or " +
-      "title like '%" + request.query.keywords + "%' order by publish_date";
-  mysql.query(fetchSql, function(err, result, fields) {
+  mysql.query(fetchSql, function (err, result, fields) {
     response.writeHead(200, {
       "Content-Type": "application/json"
     });
-    result.forEach(eachNews => {
-      eachNews.publish_date = eachNews.publish_date.toFormat("YYYY-MM-DD");
+    response.write(JSON.stringify(result));
+    response.end();
+  });
+
+});
+
+// 题材
+router.get('/factor_genre', function (request, response) {
+  var fetchSql = "select UserRating, Genre from animation";
+
+  mysql.query(fetchSql, function (err, result, fields) {
+    response.writeHead(200, {
+      "Content-Type": "application/json"
+    });
+    response.write(JSON.stringify(result));
+    response.end();
+  });
+});
+
+
+// 明星
+router.get('/factor_star', function (request, response) {
+  var fetchSql = "select UserRating, Stars from animation";
+
+  mysql.query(fetchSql, function (err, result, fields) {
+    response.writeHead(200, {
+      "Content-Type": "application/json"
     });
     response.write(JSON.stringify(result));
     response.end();
