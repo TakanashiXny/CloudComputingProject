@@ -40,6 +40,13 @@ $(document).ready(function() {
             var mcharts = echarts.init(document.getElementById("line"), );
 
             var option = {
+                tooltip: {
+                    trigger: 'axis', // 当鼠标悬停时触发提示框
+                    axisPointer: {            // 指示器类型为直角坐标系内的十字准星指示器
+                        type: 'cross'
+                    }
+                },
+
                 textStyle: {
                     fontFamily: ["Times new Roman" ,"serif"],
                     fontSize: 20,
@@ -113,13 +120,21 @@ $(document).ready(function() {
                 genre_average[key] = average;
             }
 
+            average_list = []
+
+            for (key in genre_average) {
+                average_list.push({name: key, value: genre_average[key]});
+            }
+
+            average_list = average_list.sort(compare("value"))
+
             // 绘制柱状图
             let x_value = [];
             let y_value = [];
-            for (let i in genre_average) {
-                x_value.push(i);
-                y_value.push(genre_average[i]);
-            }
+            average_list.forEach(eachAverage => {
+               x_value.push(eachAverage["name"]);
+               y_value.push(eachAverage["value"]);
+            });
 
             var mcharts = echarts.init(document.getElementById("line"), );
 
@@ -137,6 +152,21 @@ $(document).ready(function() {
                     top: 16,
                     fontFamily: "serif",
                     fontWeight: 90,
+                },
+
+                visualMap: {
+                    show: false,
+                    min: 6,   // 数据最小值
+                    max: 9, // 数据最大值
+
+                    calculable: true, // 开启计算功能
+                    orient: 'horizontal', // 水平布局
+                    left: 'center', // 左对齐
+                    bottom: 10, // 距离底部位置
+
+                    inRange: {
+                        color: ['#FF3F79','#FFA500'] // 渐变色起止颜色
+                    }
                 },
 
                 xAxis: {
@@ -157,7 +187,7 @@ $(document).ready(function() {
                     nameGap: 30,
                     type: 'value',
                     min: 6,
-                    max: 8
+                    max: 9
                 },
                 series: [
                     {
@@ -249,6 +279,9 @@ $(document).ready(function() {
 
             // 使用刚指定的配置项和数据显示图表。
             myChart.setOption(option, true);
+
+
+
 
         });
 

@@ -13,7 +13,6 @@ router.get('/process_get', function(request, response) {
       "from animation where " + request.query.way1 + " like '%" + request.query.title1 + "%'";
 
   mysql.query(fetchSql, function(err, result, fields) {
-    console.log(result)
     response.writeHead(200, {
       "Content-Type": "application/json"
     });
@@ -77,4 +76,17 @@ router.get('/get_star', function(request, response) {
     response.end();
   });
 });
+
+router.get('/genre_change', function(request, response) {
+  // sql字符串和参数
+  var fetchSql = "select Year, UserRating, Genre from animation where Genre like '%" + request.query.genre + "%'";
+  mysql.query(fetchSql, function(err, result, fields) {
+    response.writeHead(200, {
+      "Content-Type": "application/json"
+    });
+    response.write(JSON.stringify(result));
+    response.end();
+  });
+});
+
 module.exports = router;

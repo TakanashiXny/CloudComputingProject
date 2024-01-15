@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ch">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>时间热度分析</title>
-    <link rel="stylesheet" href="./stylesheets/style.css" type="text/css">
+    <meta charset="utf-8">
+    <title>题材数据变化</title>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
     <script src="./javascripts/echarts-wordcloud.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
 </head>
 <body>
 
+<!--导航栏-->
 <div id="navigation" style="list-style: none">
     <ul style="list-style: none;">
         <li><a href="index.html">主页</a></li>
@@ -21,20 +22,25 @@
 </div>
 
 <div id="head_title">
-    来看看什么样的动漫热度更高吧
+    看看每年受欢迎的类型吧
 </div>
 
+<form style="text-align: center">
+    <!--第一个条件-->
+    <br> 题材名:
+    <!--输入具体内容-->
+    <input type="text" name="title_text1" id="genre_name">
 
-<div id="search_index" style="align-items: center; justify-content: center; display: flex; ">
-    <input class="form-submit" type="button" id="year" value="查年份" style="margin-right: 10px">
-    <input class="form-submit" type="button" id="genre" value="查题材" style="margin-right: 10px">
-    <input class="form-submit" type="button" id="stars" value="查明星" style="margin-right: 10px">
-</div>
 
-<div class="picture" id="line">
+    <input class="form-submit1" type="button" value="查询">
+
+</form>
+
+<div class="picture" id="genre_line">
     <!--用于存储时间序列图-->
 </div>
 
-<script src="./javascripts/time_series.js"></script>
+
+<script src="javascripts/genre_change.js"></script>
 </body>
 </html>
