@@ -109,12 +109,6 @@ $(document).ready(function() {
             }
 
             Object.values(list).forEach(element => {
-                // 第二个位置是url的位置，将其转变为跳转按钮
-                // if (num !== 2) {
-                //
-                // } else {
-                //     table += ('<td style="width: 80px">' + '<a href=\"' + element + '\">点击跳转</a>' + '</td>');
-                // }
                 table += ('<td>' + element + '</td>');
                 num++;
             });

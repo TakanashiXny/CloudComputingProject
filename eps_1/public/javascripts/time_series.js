@@ -86,8 +86,6 @@ $(document).ready(function() {
                     {
                         type: 'line',
                         data: y_value,
-
-
                     }
                 ]
             };
