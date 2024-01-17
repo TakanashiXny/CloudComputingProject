@@ -79,7 +79,7 @@ router.get('/get_star', function(request, response) {
 
 router.get('/genre_change', function(request, response) {
   // sql字符串和参数
-  var fetchSql = "select Year, UserRating, Genre from animation where Genre like '%" + request.query.genre + "%'";
+  var fetchSql = "select Year, UserRating, Genre, Stars from animation where Genre like '%" + request.query.genre + "%'";
   mysql.query(fetchSql, function(err, result, fields) {
     response.writeHead(200, {
       "Content-Type": "application/json"

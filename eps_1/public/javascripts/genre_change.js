@@ -144,6 +144,109 @@ $(document).ready(function() {
             };
 
             mcharts.setOption(option, true);
+
+            // 绘制声优图
+            var star_rate = {}; // 存储每一个题材对应的得分
+
+            data.forEach(eachData => {
+                var stars = eachData["Stars"].split(",");
+                stars.forEach(eachStar => {
+                    if (!(eachStar in star_rate)) {
+                        star_rate[eachStar] = [eachData["UserRating"]];
+                    } else {
+                        star_rate[eachStar].push(eachData["UserRating"]);
+                    }
+                });
+            });
+
+            var star_cnt = {}; // 存储声优合作次数
+            tmp = $("#name").val();
+            data.forEach(eachData => {
+                var stars = eachData["Stars"].split(",");
+                stars.forEach(eachStar => {
+
+
+                    if (!(eachStar in star_cnt)) {
+                        star_cnt[eachStar] = 1;
+                    } else {
+                        star_cnt[eachStar] += 1;
+                    }
+
+                });
+            });
+
+            star_list = [];
+            for (key in star_cnt) {
+                star_list.push({name: key, value: star_cnt[key]});
+            }
+            star_list = star_list.sort(compare("value"));
+            console.log(star_list);
+            star_list = star_list.slice(0, 5);
+            x_value = [];
+            y_value = [];
+            star_list.forEach(eachStar => {
+                x_value.push(eachStar["name"]);
+                y_value.push(eachStar["value"]);
+            });
+
+            var mcharts = echarts.init(document.getElementById("genre_star"), );
+
+            var option = {
+                tooltip : {
+                    trigger: 'axis', // 触发类型为坐标轴触发
+                    axisPointer:{   // 指示器配置项
+                        type:'shadow' ,// 默认为直线，可选为：'line' | 'cross' | 'shadow'
+                    }
+                },
+                textStyle: {
+                    fontFamily: ["Times new Roman" ,"serif"],
+                    fontSize: 20,
+                    fontStyle: "normal",
+                    fontWeight: "normal",
+                },
+
+                title: {
+                    text: "相关声优",
+                    left: 'center',
+                    top: 16,
+                    fontFamily: "serif",
+                    fontWeight: 90,
+                },
+
+                xAxis: {
+                    name: '姓名',
+                    type: 'category',
+                    axisLabel: {
+                        rotate: "0",
+                        textStyle: {
+                            fontFamily: "Times new Roman",
+
+                        },
+                        interval: 0,
+                        fontSize: 15
+                    },
+                    data: x_value,
+
+                },
+                yAxis: {
+                    name: '动漫数量',
+                    nameRotate: '90',
+                    nameLocation: 'center',
+                    nameGap: 30,
+                    type: 'value',
+
+                },
+                series: [
+                    {
+                        type: 'bar',
+                        data: y_value,
+                        center: ['50%', '50%']
+                    }
+                ]
+            };
+
+            mcharts.setOption(option, true);
+
         });
     });
 });

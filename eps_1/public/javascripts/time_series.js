@@ -137,6 +137,12 @@ $(document).ready(function() {
             var mcharts = echarts.init(document.getElementById("line"), );
 
             var option = {
+                tooltip : {
+                    trigger: 'axis', // 触发类型为坐标轴触发
+                    axisPointer:{   // 指示器配置项
+                        type:'shadow' ,// 默认为直线，可选为：'line' | 'cross' | 'shadow'
+                    }
+                },
                 textStyle: {
                     fontFamily: ["Times new Roman" ,"serif"],
                     fontSize: 20,
@@ -176,7 +182,8 @@ $(document).ready(function() {
                             fontFamily: "Times new Roman",
                         },
                     },
-                    data: x_value
+                    data: x_value,
+                    fontWeight: 30,
                 },
                 yAxis: {
                     name: '评分',
